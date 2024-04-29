@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "IncogniMode",
+  "description": "This is our sample extension",
+  "version": "1.0",
+  "icons": {
+    "128": "Logo.png"
+  },
+  "action": {
+    "default_popup": "index.html"
+  }
+}
