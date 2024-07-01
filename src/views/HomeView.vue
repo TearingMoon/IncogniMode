@@ -1,12 +1,17 @@
 <template>
-  <div><HeaderComponent></HeaderComponent></div>
+  <div>
+    <addTargetComponent></addTargetComponent>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import addTargetComponent from '@/components/home/addTargetComponent.vue'
+
 export default defineComponent({
-  name: 'HomeView',
-  components: {},
+  components: {
+    addTargetComponent
+  },
   setup() {
     return {}
   }
