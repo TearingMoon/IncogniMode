@@ -3,3 +3,8 @@
 @tailwind utilities;
 
 /* Sets the body size - Size of the extension view */
+body {
+  width: 600px;
+  height: 400px;
+  overflow: scroll;
+}
