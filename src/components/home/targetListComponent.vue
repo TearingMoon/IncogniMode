@@ -1,19 +1,22 @@
 <template>
-  <div class="p-2 bg-slate-800 shadow rounded-lg">
-    <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+  <div class="bg-slate-800 shadow p-2 rounded-lg">
+    <table
+      class="min-w-full divide-y divide-slate-400 table-fixed"
+      v-if="targetStore.targets.length != 0"
+    >
       <thead class="bg-slate-700">
         <tr>
           <th
             scope="col"
-            class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+            class="py-3 px-6 text-xs font-medium tracking-wider uppercase text-left dark:text-slate-400"
           >
-            Name
+            <input type="text" class="bg-transparent" placeholder="NAME" v-model="searchName" />
           </th>
           <th
             scope="col"
-            class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+            class="py-3 px-6 text-xs font-medium tracking-wider uppercase text-left text-slate-400"
           >
-            Url
+            <input type="text" class="bg-transparent" placeholder="URL" v-model="searchUrl" />
           </th>
           <th scope="col" class="p-4">
             <span class="sr-only">Edit</span>
@@ -23,12 +26,16 @@
           </th>
         </tr>
       </thead>
-      <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-        <tr v-for="item in targetStore.targets" :key="item.id" class="hover:bg-slate-700">
-          <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+      <tbody class="divide-y bg-slate-800 divide-slate-700">
+        <tr
+          v-for="item in targetStore.getFilteredTargets(searchName, searchUrl)"
+          :key="item.id"
+          class="hover:bg-slate-700"
+        >
+          <td class="py-4 px-6 text-sm font-medium whitespace-nowrap text-white">
             {{ item.name }}
           </td>
-          <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+          <td class="py-4 px-6 text-sm font-medium whitespace-nowrap text-white">
             {{ item.url }}
           </td>
           <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
@@ -42,6 +49,10 @@
         </tr>
       </tbody>
     </table>
+    <div v-else class="text-white h-40 flex flex-col justify-center items-center gap-2">
+      <div class="text-center text-2xl font-bold">No Data to show yet</div>
+      <div>Add a target to start</div>
+    </div>
   </div>
 </template>
 
@@ -56,7 +67,9 @@ export default defineComponent({
   },
   data() {
     return {
-      targetStore: useTargetStore()
+      targetStore: useTargetStore(),
+      searchName: '',
+      searchUrl: ''
     }
   },
   methods: {
