@@ -12,7 +12,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-slate-900 h-full w-full min-h-screen">
+  <div class="bg-slate-900 h-full w-full min-h-screen max-h-screen box-border overflow-y-scroll scrollbar2">
     <nav class="flex gap-4 p-4">
       <RouterLink
         to="/actions"
@@ -27,7 +27,7 @@ onMounted(() => {
         >Targets</RouterLink
       >
     </nav>
-    <RouterView class="px-4 pb-4" />
+    <RouterView class="px-4 pb-4 h-full" />
   </div>
 </template>
 

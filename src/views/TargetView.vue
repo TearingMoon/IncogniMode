@@ -7,8 +7,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import addTargetComponent from '@/components/home/addTargetComponent.vue'
-import targetListComponent from '@/components/home/targetListComponent.vue'
+import addTargetComponent from '@/components/targetView/addTargetComponent.vue'
+import targetListComponent from '@/components/targetView/targetListComponent.vue'
 
 export default defineComponent({
   components: {
